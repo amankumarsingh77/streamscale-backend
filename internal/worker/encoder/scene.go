@@ -16,7 +16,7 @@ func (c *Encoder) DetectScene(ctx context.Context, inputFile string) ([]entities
 		"-f", "null",
 		"-",
 	}
-	cmd := exec.CommandContext(ctx, c.ffmpegPath, args...)
+	cmd := exec.CommandContext(ctx, c.FFmpegPath, args...)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
 		return nil, fmt.Errorf("failed to detect scene %w, output: %s", err, string(output))
@@ -24,7 +24,7 @@ func (c *Encoder) DetectScene(ctx context.Context, inputFile string) ([]entities
 	var scenes []entities.Scene
 	timeRegex := regexp.MustCompile(`pts_time:([0-9.]+)`)
 	matches := timeRegex.FindAllStringSubmatch(string(output), -1)
-	for i := 0; i < len(matches); i++ {
+	for i := 0; i < len(matches)-1; i++ {
 		startTime, _ := strconv.ParseFloat(matches[i][1], 64)
 		endTime, _ := strconv.ParseFloat(matches[i+1][1], 64)
 		duration := endTime - startTime

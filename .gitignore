@@ -1,1 +1,57 @@
 testvideos/
+output/
+redisdemo/
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Compiled object files
+*.o
+*.out
+*.so
+
+# Build directories
+/build/
+dist/
+!output/README.md  # Allow README.md in output directory
+
+# Video files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.flv
+*.webm
+
+# FFmpeg temporary files
+*.m3u8
+*.ts
+*.concat
+
+# Dependency directories
+/node_modules/
+/vendor/
+
+# IDE-specific files
+.vscode/
+.idea/
+*.iml
+
+# Go-specific files
+*.exe
+*.test
+*.mod
+*.sum
+/go.sum
+/go.mod
+
+# Environment files
+.env
